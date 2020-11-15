@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import './App.css';
 import axios from "axios";
+import LandingPage from "./Views/LandingPage";
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
   return (
     <div className="App">
 
+
+    <LandingPage />
     <div>
       <h1>Register</h1>
       <input placeholder="username" onChange={e => setRegisterUsername(e.target.value)} />  
