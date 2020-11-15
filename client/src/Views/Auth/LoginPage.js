@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Button from '../../Components/Button';
 import Input from '../../Components/Input';
 
-function LoginPage() {
+function LoginPage(props) {
+    
     const [registerUsername, setRegisterUsername] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [loginUsername, setLoginUsername] = useState("");
