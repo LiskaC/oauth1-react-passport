@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Button from "../Components/Button";
 
 function handleClick(e) {
-    alert("button clicked!")
+    console.log("Clicked Landing Page button")
    }
 
 function LandingPage() {
