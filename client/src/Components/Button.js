@@ -3,7 +3,7 @@ import "../Styles/Button.css";
 
 function Button(props) {
     return (
-        <button className="button" onClick={props.handleClick}>
+        <button className="Button" onClick={props.handleClick}>
             {props.buttonText}
         </button>
     )
