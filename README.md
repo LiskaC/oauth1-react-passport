@@ -1,13 +1,13 @@
 Current blockers:
 LoginPage:
 
-- axios / cors issue for post request on signup
 - how to extract the hooks into a new file? and other repeated code
 
 BackButton:
 
 - does this have to be a separate button from the Button.js? basically I couldn't find out how to pass the history.goBack into the handleClick function
-- Also the BackButton currently only functions as a page of its own linked to in App.js router and not when imported as a component in other files (error cannot read property go back of undefined)
+- tiny-warning.esm.js:11 Warning: <BrowserRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { BrowserRouter as Router }`.
+- getting an incorrect use of Hooks error in UseHistoryBackButton.js. duplicate reacts? npm ls react https://github.com/facebook/react/issues/13991#issuecomment-435587809 ?
 
 Quick fixes:
 

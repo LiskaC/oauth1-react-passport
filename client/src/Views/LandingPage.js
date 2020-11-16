@@ -13,7 +13,6 @@ function LandingPage() {
          <h1>This is the landing page</h1>
         <Button handleClick={handleClick} buttonText={"Hello there"}/>
         <Link className="Link" to="/login">Login</Link>
-        <Link className="Link" to="/back-button">Back Button</Link>
         </div>
     )
 };

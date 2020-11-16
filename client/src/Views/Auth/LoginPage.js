@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-//import axios from "axios";
+import axios from "axios";
 import Button from '../../Components/Button';
 import Input from '../../Components/Input';
+import BackButton from "../../Components/BackButton";
 
 function LoginPage(props) {
     
@@ -31,7 +32,6 @@ function LoginPage(props) {
 
     //button clicks
     const register = () => { console.log("Clicked register button")
-        /*
       axios({
         method: "post",
         data: {
@@ -39,16 +39,18 @@ function LoginPage(props) {
           password: registerPassword,
         },
         withCredentials: true,
-        url: "http://localhost/5000/register", //so long as this is being run locally | GETTING CONNECTION ERROR
+        url: "http://localhost:5000/auth/register",
       }).then((res) => console.log(res))
       .catch((err) => console.log(err));
-      */
+      
     };
     const login = () => {console.log("Clicked login button")};
     const getUser = () => {console.log("Clicked get User button")};
   
     return (
       <div className="Login">
+ 
+ <BackButton history={props.history} />
 
       <div>
         <h1>Register</h1>
