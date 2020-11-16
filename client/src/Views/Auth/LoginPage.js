@@ -5,21 +5,10 @@ import Input from '../../Components/Input';
 import BackButton from "../../Components/BackButton";
 
 function LoginPage(props) {
-    
-    const [registerUsername, setRegisterUsername] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
  
     //input edits
-    const handleRegisterUsernameInputChange = (e) => {
-        setRegisterUsername(e.target.value);
-        console.log("registered username: " + registerUsername);
-    }
-    const handleRegisterPasswordInputChange = (e) => {
-        setRegisterPassword(e.target.value);
-        console.log("registered password: " + registerPassword);
-    }
     const handleLoginUsernameInputChange = (e) => {
         setLoginUsername(e.target.value);
         console.log("login username: " + loginUsername);
@@ -31,34 +20,24 @@ function LoginPage(props) {
 
 
     //button clicks
-    const register = () => { console.log("Clicked register button")
-      axios({
-        method: "post",
-        data: {
-          username: registerUsername,
-          password: registerPassword,
-        },
-        withCredentials: true,
-        url: "http://localhost:5000/auth/register",
-      }).then((res) => console.log(res))
-      .catch((err) => console.log(err));
-      
-    };
-    const login = () => {console.log("Clicked login button")};
+    const login = () => {console.log("Clicked login button")
+    axios({
+      method: "post",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:5000/auth/login",
+    }).then((res) => console.log(res))
+    .catch((err) => console.log(err));
+  };
     const getUser = () => {console.log("Clicked get User button")};
   
     return (
       <div className="Login">
  
  <BackButton history={props.history} />
-
-      <div>
-        <h1>Register</h1>
-        <Input placeholder="username" handleInputChange={handleRegisterUsernameInputChange} />  
-        <Input placeholder="password" handleInputChange={handleRegisterPasswordInputChange} />
-        <Button handleClick={register} buttonText={"Submit"} />
-      </div>
-  
   
       <div>
         <h1>Login</h1>
