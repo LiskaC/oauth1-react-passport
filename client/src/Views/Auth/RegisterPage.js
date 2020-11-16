@@ -36,8 +36,6 @@ function RegisterPage(props) {
   
     return (
       <div className="Register">
- 
- <BackButton history={props.history} />
 
       <div>
         <h1>Register</h1>
@@ -45,6 +43,8 @@ function RegisterPage(props) {
         <Input placeholder="password" onChange={handleRegisterPasswordInputChange} />
         <Button handleClick={register} buttonText={"Submit"} />
       </div>
+ 
+ <BackButton history={props.history} />
   
       </div>
     );

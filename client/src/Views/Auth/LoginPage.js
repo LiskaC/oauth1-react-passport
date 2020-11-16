@@ -36,8 +36,6 @@ function LoginPage(props) {
   
     return (
       <div className="Login">
- 
- <BackButton history={props.history} />
   
       <div>
         <h1>Login</h1>
@@ -51,6 +49,8 @@ function LoginPage(props) {
         <h1>Get User</h1>
         <Button handleClick={getUser} buttonText={"Submit"} />
       </div>
+ 
+      <BackButton history={props.history} />
   
       </div>
     );
