@@ -33,12 +33,19 @@ app.use(
 
 app.use(cookieParser("secretcode"));
 
+//initialise passport
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport-setup")(passport);
+
 
 //connect to mongodb
 mongoose.connect('mongodb://localhost:27017/oauth-react-nodejs-app', { useNewUrlParser: true, useUnifiedTopology: true  }, () => {
   console.log("connected to mongodb");
 });
 var db = mongoose.connection;
+
+//-------------------------END OF MIDDLEWARE-------------------------//
 
 // Routes
 app.use("/auth", authRoutes);
