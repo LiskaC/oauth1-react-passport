@@ -34,6 +34,13 @@ app.use(
 
 app.use(cookieParser("secretcode"));
 
+
+//connect to mongodb
+mongoose.connect('mongodb://localhost:27017/oauth-react-nodejs-app', { useNewUrlParser: true }, () => {
+  console.log("connected to mongodb");
+});
+var db = mongoose.connection;
+
 // Routes
 app.use("/auth", authRoutes);
 

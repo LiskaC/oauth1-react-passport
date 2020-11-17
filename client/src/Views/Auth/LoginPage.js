@@ -32,7 +32,14 @@ function LoginPage(props) {
     }).then((res) => console.log(res))
     .catch((err) => console.log(err));
   };
-    const getUser = () => {console.log("Clicked get User button")};
+    const getUser = () => {console.log("Clicked get User button")
+    axios({
+      method: "get",
+      withCredentials: true,
+      url: "http://localhost:5000/auth/user",
+    }).then((res) => console.log(res))
+    .catch((err) => console.log(err));
+  };
   
     return (
       <div className="Login">
