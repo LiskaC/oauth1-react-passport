@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const User = require("../schemas/user"); 
 
 router.post('/register', (req, res) => {
     console.log(req.body);
