@@ -7,7 +7,7 @@ import BackButton from "../../Components/BackButton";
 function LoginPage(props) {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
- 
+    const [data, setData] = useState(null);
     //input edits
     const handleLoginUsernameInputChange = (e) => {
         setLoginUsername(e.target.value);
@@ -29,7 +29,7 @@ function LoginPage(props) {
       },
       withCredentials: true,
       url: "http://localhost:5000/auth/login",
-    }).then((res) => console.log(res))
+    }).then((res) => console.log(res.data))
     .catch((err) => console.log(err));
   };
     const getUser = () => {console.log("Clicked get User button")
@@ -37,7 +37,10 @@ function LoginPage(props) {
       method: "get",
       withCredentials: true,
       url: "http://localhost:5000/auth/user",
-    }).then((res) => console.log(res))
+    }).then((res) => {
+      setData(res.data);
+      console.log(res.data)
+    })
     .catch((err) => console.log(err));
   };
   
@@ -55,6 +58,9 @@ function LoginPage(props) {
       <div>
         <h1>Get User</h1>
         <Button handleClick={getUser} buttonText={"Submit"} />
+      {
+        data ? <h1>Welcome back {data.username}!</h1> : null
+      }
       </div>
  
       <BackButton history={props.history} />

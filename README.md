@@ -1,4 +1,9 @@
 Current blockers:
+
+Authroutes
+//Register: User Already Exists not working
+//Login: not entering the passport.authenticate function
+
 LoginPage:
 
 - how to extract the hooks into a new file? and other repeated code

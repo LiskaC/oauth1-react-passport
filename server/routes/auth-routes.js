@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 const bcryptSalt = 10;
 const User = require("../models/user"); 
 
@@ -10,7 +11,7 @@ router.post('/register', (req, res) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
     
-    console.log(req.body);
+    console.log("register request body: " + req.body);
 
     User.findOne({username, hashPass}, async (err, doc) => {
         if (err) throw err;
@@ -28,11 +29,23 @@ router.post('/register', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-    console.log(req.body);
+    passport.authenticate("local", (err, user, info) => {
+        console.log("in here");
+        if (err) throw err;
+        if (!user) res.send("No User Exists")
+        else {
+            req.logIn(user, err => {
+                if (err) throw err;
+                res.send("Successfully Authenticated");
+                console.log(req.user);
+            })
+        }
+    })
 });
 
 
 router.get('/user', (req, res) => {
+    res.send(req.user);
     console.log(req.body);
 });
 
