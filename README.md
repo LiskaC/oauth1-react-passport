@@ -17,8 +17,6 @@ Questions:
 
 - can you use hooks in React Native?
 - can / should I use buttons for navigation? clickthrough. Or should this be all links?
+- when saving in server file other than server.js getting an app crash since 5000 is already in use - not the case when I save from within server.js
 
 Next:
-
-- Add history => back button (with react router)
-- Separate out Register/Login pages

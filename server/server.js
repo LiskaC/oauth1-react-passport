@@ -6,7 +6,6 @@ const cors = require("cors");
 const passport = require("passport");
 const passportLocal = require("passport-local");
 const cookieParser = require("cookie-parser");
-const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 
