@@ -40,7 +40,7 @@ router.post('/login', (req, res) => {
                 console.log(req.user);
             })
         }
-    })
+    }) (req, res) // call function
 });
 
 
