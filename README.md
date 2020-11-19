@@ -20,4 +20,9 @@ BackButton
 - tiny-warning.esm.js:11 Warning: <BrowserRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { BrowserRouter as Router }`.
 - getting an incorrect use of Hooks error in UseHistoryBackButton.js. duplicate reacts? npm ls react https://github.com/facebook/react/issues/13991#issuecomment-435587809 ?
 
-Next:
+Next to implement:
+
+- Forgot password function
+- Protected views
+- Map view
+- Password strength checker

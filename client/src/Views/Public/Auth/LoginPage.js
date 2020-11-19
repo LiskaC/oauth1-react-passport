@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from '../../Components/Button';
-import Input from '../../Components/Input';
-import BackButton from "../../Components/BackButton";
+import Button from '../../../Components/Button';
+import Input from '../../../Components/Input';
+import BackButton from "../../../Components/BackButton";
 
 function LoginPage(props) {
     const [loginUsername, setLoginUsername] = useState("");
