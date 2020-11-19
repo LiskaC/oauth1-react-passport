@@ -11,9 +11,17 @@ router.post('/register', (req, res) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
     
-    console.log("register request body: " + req.body);
+ /*  // allows identification of keys in the req.body object ( returned as: [ object Object ])
+     for (var key in req.body) {
+        console.log(key);
+        }
 
-    User.findOne({username, hashPass}, async (err, doc) => {
+    // uses an identified key (username) to access the associated value
+ console.log("register request body: " + req.body.username);
+      
+      */
+
+    User.findOne({username: req.body.username }, async (err, doc) => {
         if (err) throw err;
         if (doc) res.send("User Already Exists");
         if (!doc) {
@@ -40,7 +48,7 @@ router.post('/login', (req, res) => {
                 console.log(req.user);
             })
         }
-    }) (req, res) // call function
+    }) (req, res) // call func
 });
 
 
