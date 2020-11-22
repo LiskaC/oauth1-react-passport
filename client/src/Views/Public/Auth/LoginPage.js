@@ -32,6 +32,7 @@ function LoginPage(props) {
     }).then((res) => console.log(res.data))
     .catch((err) => console.log(err));
   };
+
     const getUser = () => {console.log("Clicked get User button")
     axios({
       method: "get",
@@ -64,6 +65,7 @@ function LoginPage(props) {
       </div>
  
       <BackButton history={props.history} />
+
   
       </div>
     );

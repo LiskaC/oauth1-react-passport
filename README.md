@@ -2,6 +2,7 @@ Current blockers:
 
 Quick fixes:
 
+- how do I access secret session from .env ? (process.env.SECRET_SESSION not working)
 - how do I set auto-formatting (e.g. with indentation on save)? Prettier already installed.
 
 Questions:

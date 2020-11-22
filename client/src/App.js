@@ -4,7 +4,8 @@ import './App.css';
 import LandingPage from "./Views/Public/LandingPage";
 import LoginPage from "./Views/Public/Auth/LoginPage";
 import RegisterPage from "./Views/Public/Auth/RegisterPage";
-import ForgotPasswordPage from "./Views/Public/Auth/ForgotPassword";
+import ForgotPasswordPage from "./Views/Public/Auth/ForgotPasswordPage";
+import MapPage from "./Views/Protected/MapPage";
 
 
 function App() {
@@ -13,9 +14,10 @@ function App() {
       <BrowserRouter history={{}} >
       <Switch>
         <Route path="/" exact component={LandingPage} />
-        <Route path="/login" exact component={LoginPage} />
-        <Route path="/register" exact component={RegisterPage} />
-        <Route path="/forgotpassword" exact component={ForgotPasswordPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/forgotpassword" component={ForgotPasswordPage} />
+        <Route path="/map" component={MapPage} />
     </Switch>
     </BrowserRouter>
     </div>

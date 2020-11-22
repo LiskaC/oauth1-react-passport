@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Button from '../../../Components/Button';
-import Input from '../../../Components/Input';
+import React from "react";
 import BackButton from "../../../Components/BackButton";
 
 function ForgotPasswordPage(props) {

@@ -26,12 +26,13 @@ app.use(
 
 app.use(
   session({
-    secret: "secretcode",
+    secret: "38RDJjdsd4t5udDFGUEI934J",
     resave: true,
-    saveUninitialized: true    
+    saveUninitialized: true,
+    maxAge: 365 * 24 * 60 * 60 * 1000
 }));
 
-app.use(cookieParser("secretcode"));
+app.use(cookieParser("38RDJjdsd4t5udDFGUEI934J"));
 
 //initialise passport
 app.use(passport.initialize());
