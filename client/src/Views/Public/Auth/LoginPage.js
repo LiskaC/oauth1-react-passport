@@ -44,6 +44,18 @@ function LoginPage(props) {
     })
     .catch((err) => console.log(err));
   };
+
+    const enter = () => {console.log("Clicked get Enter button")
+    axios({
+      method: "get",
+      withCredentials: true,
+      url: "http://localhost:5000/auth/user",
+    }).then((res) => {
+      setData(res.data);
+      data ? props.history.push("/map") : console.log("No logged-in user");
+    })
+    .catch((err) => console.log(err));
+  };
   
     return (
       <div className="Login">
@@ -63,6 +75,9 @@ function LoginPage(props) {
         data ? <h1>Welcome back {data.username}!</h1> : null
       }
       </div>
+
+
+      <Button handleClick={enter} buttonText={"Enter Application"} />
  
       <BackButton history={props.history} />
 
