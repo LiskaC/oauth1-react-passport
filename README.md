@@ -10,6 +10,7 @@ Quick fixes:
 Questions:
 
 - should my latitude and longitude properties be 'null' provisionally? (in /register)
+- not sure that my current 'dual' logout system is optimal?
 - can you use hooks in React Native?
 - can / should I use buttons for navigation? clickthrough. Or should this be all links?
 - when saving in server file other than server.js getting an app crash since 5000 is already in use - not the case when I save from within server.js

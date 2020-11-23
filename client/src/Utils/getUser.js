@@ -6,7 +6,6 @@ export const logout = () => {console.log("Clicked get User button")
       withCredentials: true,
       url: "http://localhost:5000/auth/logout",
     }).then((res) => {
-      console.log(res.data)
       console.log("logged out")
     })
     .catch((err) => console.log(err));

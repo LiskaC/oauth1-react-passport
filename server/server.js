@@ -10,6 +10,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 
 const authRoutes = require("./routes/auth-routes");
+const updateRoutes = require("./routes/update-routes");
 
 const app = express();
 
@@ -44,12 +45,14 @@ require("./config/passport-setup")(passport);
 mongoose.connect('mongodb://localhost:27017/oauth-react-nodejs-app', { useNewUrlParser: true, useUnifiedTopology: true  }, () => {
   console.log("connected to mongodb");
 });
+mongoose.set('useFindAndModify', false);
 var db = mongoose.connection;
 
 //-------------------------END OF MIDDLEWARE-------------------------//
 
 // Routes
 app.use("/auth", authRoutes);
+app.use("/update", updateRoutes);
 
   app.listen(port, () => {
       console.log(`Listening on ${port} `)

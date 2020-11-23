@@ -29,7 +29,7 @@ router.post('/register', (req, res) => {
                 username,
                 password: hashPass,
                 hasCharger: false,
-                geometry: {latitude: null, longitude: null} // should these be null as placeholders? 
+                geometry: {latitude: 0, longitude: 0} // should these be null as placeholders? 
             });
             await newUser.save()
             res.send("New user created");
@@ -62,7 +62,7 @@ router.get('/user', (req, res) => {
 router.get('/logout', (req, res) => {
     console.log("in /logout")
     req.logout();
-    console.log(req.user)
+    res.send(req.user)
 });
 
 
