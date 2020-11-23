@@ -27,13 +27,13 @@ const providerValue = useMemo(() => ({user, setUser}), [user, setUser])
 
         <UserContext.Provider value={providerValue}>
           <Route path="/login" component={LoginPage} />
-          <Route path="/map" component={MapPage} />
+          
+          {/* <Route path="/map" component={MapPage} />
           <Route path="/chats" component={ChatsListPage} />
-          <Route path="/charger" exact component={AddChargerPage} />
-          {/* causes history to stop working:
+          <Route path="/charger" exact component={AddChargerPage} />  */}
           <PrivateRoute path="/map" component={MapPage} />
           <PrivateRoute path="/chats" component={ChatsListPage} />
-          <PrivateRoute path="/charger" exact component={AddChargerPage} /> */}
+          <PrivateRoute path="/charger" exact component={AddChargerPage} /> 
         </UserContext.Provider>
     </Switch>
     </BrowserRouter>

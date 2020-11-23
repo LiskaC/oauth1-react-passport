@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import {UserContext} from "../../Contexts/UserContext";
 import { Link } from "react-router-dom";
 import BackButton from "../../Components/BackButton";
-import { logout } from "../../Utils/logout";
+import { logout } from "../../Utils/axios-calls";
 
 function MapPage(props) {
     const {user, setUser} = useContext(UserContext);
-
+console.log(props)
     return(
         <div>
             <h2>This is a map</h2>

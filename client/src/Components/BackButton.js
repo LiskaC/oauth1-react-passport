@@ -1,10 +1,10 @@
 import React from "react";
 import "../Styles/Button.css";
 
-function BackButton(props) {
+function BackButton({history}) {
     return ( 
     <div>
-        <button className="Button" onClick={props.history.goBack} >Go Back</button>
+        <button className="Button" onClick={history.goBack} >Go Back</button>
     </div> )
 }
 

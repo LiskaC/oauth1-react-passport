@@ -56,11 +56,11 @@ router.post('/login', (req, res) => {
 
 router.get('/user', (req, res) => {
     res.send(req.user);
+    console.log("user req body: ");
     console.log(req.body);
 });
 
 router.get('/logout', (req, res) => {
-    console.log("in /logout")
     req.logout();
     res.send(req.user)
 });
