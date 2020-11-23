@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {UserContext} from "../../../Contexts/UserContext";
 import axios from "axios";
 import Button from '../../../Components/Button';
 import Input from '../../../Components/Input';
 import BackButton from "../../../Components/BackButton";
 
 function LoginPage(props) {
+    const {user, setUser} = useContext(UserContext);
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-    const [data, setData] = useState(null);
+
     //input edits
     const handleLoginUsernameInputChange = (e) => {
         setLoginUsername(e.target.value);
@@ -18,9 +20,8 @@ function LoginPage(props) {
         console.log("login password: " + loginPassword);
     }
 
-
     //button clicks
-    const login = () => {console.log("Clicked login button")
+    const login = () => {console.log("Clicked login to Authenticate button")
     axios({
       method: "post",
       data: {
@@ -29,7 +30,9 @@ function LoginPage(props) {
       },
       withCredentials: true,
       url: "http://localhost:5000/auth/login",
-    }).then((res) => console.log(res.data))
+    }).then((res) => {
+      console.log(res.data)
+    })
     .catch((err) => console.log(err));
   };
 
@@ -39,8 +42,8 @@ function LoginPage(props) {
       withCredentials: true,
       url: "http://localhost:5000/auth/user",
     }).then((res) => {
-      setData(res.data);
-      console.log(res.data)
+      setUser(res.data)
+      console.log( "getUser res. data" + res.data)
     })
     .catch((err) => console.log(err));
   };
@@ -51,8 +54,8 @@ function LoginPage(props) {
       withCredentials: true,
       url: "http://localhost:5000/auth/user",
     }).then((res) => {
-      setData(res.data);
-      data ? props.history.push("/map") : console.log("No logged-in user");
+      setUser(res.data);
+      user ? props.history.push("/map") : console.log("No logged-in user");
     })
     .catch((err) => console.log(err));
   };
@@ -63,7 +66,7 @@ function LoginPage(props) {
       <div>
         <h1>Login</h1>
         <Input placeholder="username" onChange={handleLoginUsernameInputChange} />  
-        <Input placeholder="password" onChange={handleLoginPasswordInputChange}/>
+        <Input placeholder="password" onChange={handleLoginPasswordInputChange} />
         <Button handleClick={login} buttonText={"Submit"} />
       </div>
   
@@ -72,8 +75,11 @@ function LoginPage(props) {
         <h1>Get User</h1>
         <Button handleClick={getUser} buttonText={"Submit"} />
       {
-        data ? <h1>Welcome back {data.username}!</h1> : null
+        user ? <h1>Welcome back {user.username}!</h1> : null
       }
+
+
+    <pre>{JSON.stringify(user, null, 2)}</pre>
       </div>
 
 

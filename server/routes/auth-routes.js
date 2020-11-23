@@ -38,14 +38,14 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
     passport.authenticate("local", (err, user, info) => {
-        console.log("in here");
+        console.log("in /login passport authenticate");
         if (err) throw err;
         if (!user) res.send("No User Exists")
         else {
             req.logIn(user, err => {
                 if (err) throw err;
                 res.send("Successfully Authenticated");
-                console.log(req.user);
+                console.log("in /login passport authenticate, requested user: " + req.user);
             })
         }
     }) (req, res) // call func
