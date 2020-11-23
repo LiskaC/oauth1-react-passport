@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from '../../../Components/Button';
 import Input from '../../../Components/Input';
 import BackButton from "../../../Components/BackButton";
+import { logout } from "../../../Utils/logout";
 
 function LoginPage(props) {
     const {user, setUser} = useContext(UserContext);
@@ -59,7 +60,6 @@ function LoginPage(props) {
     })
     .catch((err) => console.log(err));
   };
-  
     return (
       <div className="Login">
   
@@ -88,6 +88,8 @@ function LoginPage(props) {
       <BackButton history={props.history} />
 
   
+
+<Button handleClick={logout} buttonText={"Logout Application"} />
       </div>
     );
 }
