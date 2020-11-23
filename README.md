@@ -17,6 +17,7 @@ Questions:
 
 Next to implement:
 
+- extract getUser method into util
 - Forgot password function
 - Protected views
 - Map view

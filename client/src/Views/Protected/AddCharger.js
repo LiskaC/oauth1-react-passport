@@ -5,7 +5,7 @@ import axios from "axios";
 import BackButton from "../../Components/BackButton";
 import Button from "../../Components/Button"
 import Input from "../../Components/Input";
-import { logout } from "../../Utils/logout";
+import { logout, getUser } from "../../Utils/axios-calls";
 
 
 function AddChargerPage(props) {
@@ -42,19 +42,6 @@ function AddChargerPage(props) {
         } else { console.log(user) }
         };
 
-
-          const getUser = () => {console.log("Clicked get User button")
-    axios({
-      method: "get",
-      withCredentials: true,
-      url: "http://localhost:5000/auth/user",
-    }).then((res) => {
-      setUser(res.data)
-      console.log( "getUser res. data" + res.data)
-    })
-    .catch((err) => console.log(err));
-  };
-
     return(
         <div>
             <h2>Add Charger</h2>
@@ -66,7 +53,7 @@ function AddChargerPage(props) {
       </div>
 
       <h1>Get User</h1>
-        <Button handleClick={getUser} buttonText={"Submit"} />
+        <Button handleClick={getUser(setUser)} buttonText={"Submit"} />
 
 <BackButton history={props.history} />
     <div>
