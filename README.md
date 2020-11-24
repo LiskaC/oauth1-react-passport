@@ -17,12 +17,10 @@ Questions:
 
 Next to implement:
 
-- write regex file
+- get map to display lat and long values from db
+- write regex file: Password strength checker, lat/long
 - extract getUser method into util
 - Forgot password function
-- Protected views
-- create Map view
-- Password strength checker
 
 LoginPage
 

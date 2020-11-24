@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import ReactMapGL, {Marker, Popup} from "react-map-gl";
 import {UserContext} from "../../Contexts/UserContext";
 import { Link } from "react-router-dom";
+import * as fireData from "../../Utils/FIRE_FACILITY_WGS84.json";
+import marker from "../../Assets/marker.png";
+import "../../Styles/Marker.css";
 import BackButton from "../../Components/BackButton";
 import { logout } from "../../Utils/axios-calls";
 
@@ -15,6 +18,7 @@ function MapPage(props) {
     zoom: 10,
     position: "center" 
     })
+    const [selectedMarker, setSelectedMarker] = useState(null);
 
     return(
         <div>
@@ -37,8 +41,48 @@ function MapPage(props) {
     </div>
 
     <ReactMapGL {...viewport}
-    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN} >
-        markers here
+    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN} 
+    onViewportChange={ viewport => {
+        setViewport(viewport);
+    }}
+    mapStyle="mapbox://styles/liskac/ckhvt8nks0pha1ao31gr6vssl"
+    >
+
+        {fireData.default.map((location) => {
+         return <Marker 
+         key={[location]}
+         latitude={[location][0][1]}
+         longitude={[location][0][0]}
+         offsetTop={-25}
+         >
+             <button className="marker-btn" onClick={(e) => {
+                 e.preventDefault();
+                setSelectedMarker(location)
+             }}>
+            <img src={marker} alt="charger" />
+            </button>
+
+            </Marker>
+        })}
+
+        {selectedMarker ? (
+            <Popup
+            latitude={selectedMarker[1]}
+            longitude={selectedMarker[0]} 
+            offsetTop={-25}
+            offsetLeft={30}
+            onClose={() => {
+                setSelectedMarker(null)
+            }}
+             >
+                <div>
+                Charger
+  <p>latitude: {selectedMarker[1]}</p>
+  <p>longitude: {selectedMarker[0]}</p>
+                </div>
+            </Popup>
+        ) : null}
+
     </ReactMapGL>
 
     <Link className="Link" to="/chats">Chats</Link>
