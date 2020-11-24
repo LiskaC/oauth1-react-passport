@@ -1,0 +1,1 @@
+export const checkLatuidtudeRegex = new RegExp('^((\-?|\+?)?\d+(\.\d+)?),\s*((\-?|\+?)?\d+(\.\d+)?)$');

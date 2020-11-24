@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const logout = () => {console.log("Clicked get User button")
+export const logout = () => {
     axios({
       method: "get",
       withCredentials: true,
@@ -13,7 +13,6 @@ export const logout = () => {console.log("Clicked get User button")
   };
 
   export const getUser = (hook) => {
-    console.log("Clicked get User button")
   axios({
     method: "get",
     withCredentials: true,
@@ -26,7 +25,6 @@ export const logout = () => {console.log("Clicked get User button")
 };
 
 export const login = (loginUsername, loginPassword) => {
-  console.log("Clicked login to Authenticate button")
 axios({
   method: "post",
   data: {

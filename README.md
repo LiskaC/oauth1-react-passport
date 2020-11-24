@@ -17,10 +17,11 @@ Questions:
 
 Next to implement:
 
+- write regex file
 - extract getUser method into util
 - Forgot password function
 - Protected views
-- Map view
+- create Map view
 - Password strength checker
 
 LoginPage
