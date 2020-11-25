@@ -8,6 +8,7 @@ router.post('/charger', (req, res) => {
     
 
     User.findOneAndUpdate({username: req.body.username }, {
+        //hasCharger needs to be changed to the req.body.hasCharger once there is a way for people to toggle this between true/false
                 hasCharger: true,
                 coordinates: 
                 {latitude: req.body.latitude, 

@@ -40,7 +40,7 @@ function AddChargerPage(props) {
           })
           .catch((err) => console.log(err))
         } else { console.log(user) }
-        };
+      };
 
 
 

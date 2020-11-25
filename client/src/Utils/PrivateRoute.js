@@ -7,12 +7,10 @@ import { UserContext } from "../Contexts/UserContext";
 
 export default function PrivateRoute({ component: Component, ...rest }) {
     const {user} = useContext(UserContext);
-    console.log({...rest})
   return (
     <Route
       {...rest}
       render={( props ) => {
-        console.log(props)
         return user ? (
           <Component {...props} />
         ) : (

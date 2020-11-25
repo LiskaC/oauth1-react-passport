@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 
 const authRoutes = require("./routes/auth-routes");
 const updateRoutes = require("./routes/update-routes");
+const retrieveRoutes = require("./routes/retrieve-routes");
 
 const app = express();
 
@@ -53,6 +54,7 @@ var db = mongoose.connection;
 // Routes
 app.use("/auth", authRoutes);
 app.use("/update", updateRoutes);
+app.use("/retrieve", retrieveRoutes);
 
   app.listen(port, () => {
       console.log(`Listening on ${port} `)

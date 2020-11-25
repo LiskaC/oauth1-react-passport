@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import ReactMapGL, {Marker, Popup} from "react-map-gl";
 import {UserContext} from "../../Contexts/UserContext";
-import { Link } from "react-router-dom";
-import * as fireData from "../../Utils/FIRE_FACILITY_WGS84.json";
-import marker from "../../Assets/marker.png";
-import "../../Styles/Marker.css";
-import BackButton from "../../Components/BackButton";
+import axios from "axios";
 import { logout } from "../../Utils/axios-calls";
+import marker from "../../Assets/marker.png";
+import { Link } from "react-router-dom";
+import BackButton from "../../Components/BackButton";
+import Button from "../../Components/Button";
+import "../../Styles/Marker.css";
+import "../../Styles/Link.css"
 
 function MapPage(props) {
     const {user, setUser} = useContext(UserContext);
@@ -18,18 +20,45 @@ function MapPage(props) {
     zoom: 10,
     position: "center" 
     })
-    const [selectedMarker, setSelectedMarker] = useState(null);
+    const [selectedCharger, setSelectedCharger] = useState(null);
+    const [chargers, setChargers] = useState(null);
+
+
+    const getMarkers = () => {
+    axios({
+      method: "get",
+      withCredentials: true,
+      url: "http://localhost:5000/retrieve/markers",
+    }).then((res) => {
+      setChargers(res.data)
+    })
+    .catch((err) => console.log(err));
+
+    console.log("chargers", chargers)
+    if (chargers != null) {
+    console.log("chargers.", chargers[1].coordinates)}
+  };
+
+
 
     return(
         <div>
             <h2>This is a map</h2>
 
-    <BackButton history={props.history} />
+
+            <Button handleClick={getMarkers} buttonText={"Get Markers"} />
+
+            <BackButton history={props.history} />
+
+
+            <Link className="Link" to="/chats">Chats</Link>
+            <Link className="Link" to="/charger">Charger</Link>
     <div>
             
             <h2> Hi </h2>
             <div>
     <pre>{JSON.stringify(user.coordinates, null, 2)}</pre>
+    { chargers ? <pre>{JSON.stringify(chargers.coordinates, null, 2)}</pre> : null}
         
         { user ? <button onClick={() => {
             //calls logout function
@@ -48,45 +77,51 @@ function MapPage(props) {
     mapStyle="mapbox://styles/liskac/ckhvt8nks0pha1ao31gr6vssl"
     >
 
-        {fireData.default.map((location) => {
+{ chargers !=null ? 
+
+chargers.map((charger) => {
+    console.log(charger.username)
+    console.log(chargers)
          return <Marker 
-         key={[location]}
-         latitude={[location][0][1]}
-         longitude={[location][0][0]}
-         offsetTop={-25}
+         key={[charger._id]}
+         latitude={charger.coordinates.latitude}
+         longitude={charger.coordinates.longitude}
          >
              <button className="marker-btn" onClick={(e) => {
                  e.preventDefault();
-                setSelectedMarker(location)
+                setSelectedCharger(charger)
              }}>
             <img src={marker} alt="charger" />
             </button>
-
             </Marker>
-        })}
+        })
+        : console.log("failed to map chargers")}
 
-        {selectedMarker ? (
+
+
+{selectedCharger ? (
             <Popup
-            latitude={selectedMarker[1]}
-            longitude={selectedMarker[0]} 
+            latitude={selectedCharger.coordinates.latitude}
+            longitude={selectedCharger.coordinates.longitude} 
             offsetTop={-25}
             offsetLeft={30}
             onClose={() => {
-                setSelectedMarker(null)
+                setSelectedCharger(null)
             }}
              >
                 <div>
                 Charger
-  <p>latitude: {selectedMarker[1]}</p>
-  <p>longitude: {selectedMarker[0]}</p>
+  <p>latitude: {selectedCharger.coordinates.latitude}</p>
+  <p>longitude: {selectedCharger.coordinates.longitude}</p>
                 </div>
             </Popup>
         ) : null}
+        
+
+
+
 
     </ReactMapGL>
-
-    <Link className="Link" to="/chats">Chats</Link>
-    <Link className="Link" to="/charger">Charger</Link>
         </div>
     )
 };

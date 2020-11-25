@@ -22,7 +22,7 @@ function LoginPage(props) {
     }
 
     //button clicks
-    const login = () => {console.log("Clicked login to Authenticate button")
+    const login = () => {
     axios({
       method: "post",
       data: {
@@ -37,19 +37,18 @@ function LoginPage(props) {
     .catch((err) => console.log(err));
   };
 
-    const getUser = () => {console.log("Clicked get User button")
+    const getUser = () => {
     axios({
       method: "get",
       withCredentials: true,
       url: "http://localhost:5000/auth/user",
     }).then((res) => {
       setUser(res.data)
-      console.log( "getUser res. data" + res.data)
     })
     .catch((err) => console.log(err));
   };
 
-    const enter = () => {console.log("Clicked get Enter button")
+    const enter = () => {
     axios({
       method: "get",
       withCredentials: true,
