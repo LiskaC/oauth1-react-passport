@@ -1,6 +1,4 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
-const passport = require("passport");
 const User = require("../models/user"); 
 
 router.get('/markers', (req, res) => {

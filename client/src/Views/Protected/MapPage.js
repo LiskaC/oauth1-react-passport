@@ -33,10 +33,6 @@ function MapPage(props) {
       setChargers(res.data)
     })
     .catch((err) => console.log(err));
-
-    console.log("chargers", chargers)
-    if (chargers != null) {
-    console.log("chargers.", chargers[1].coordinates)}
   };
 
 
@@ -80,8 +76,6 @@ function MapPage(props) {
 { chargers !=null ? 
 
 chargers.map((charger) => {
-    console.log(charger.username)
-    console.log(chargers)
          return <Marker 
          key={[charger._id]}
          latitude={charger.coordinates.latitude}

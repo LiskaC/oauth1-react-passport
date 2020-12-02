@@ -14,11 +14,9 @@ function LoginPage(props) {
     //input edits
     const handleLoginUsernameInputChange = (e) => {
         setLoginUsername(e.target.value);
-        console.log("login username: " + loginUsername);
     }
     const handleLoginPasswordInputChange = (e) => {
         setLoginPassword(e.target.value);
-        console.log("login password: " + loginPassword);
     }
 
     //button clicks
@@ -33,17 +31,6 @@ function LoginPage(props) {
       url: "http://localhost:5000/auth/login",
     }).then((res) => {
       console.log(res.data)
-    })
-    .catch((err) => console.log(err));
-  };
-
-    const getUser = () => {
-    axios({
-      method: "get",
-      withCredentials: true,
-      url: "http://localhost:5000/auth/user",
-    }).then((res) => {
-      setUser(res.data)
     })
     .catch((err) => console.log(err));
   };
@@ -72,8 +59,6 @@ function LoginPage(props) {
   
   
       <div>
-        <h1>Get User</h1>
-        <Button handleClick={getUser} buttonText={"Submit"} />
       {
         user ? <h1>Welcome back {user.username}!</h1> : null
       }

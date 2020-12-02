@@ -17,7 +17,7 @@ Questions:
 
 Next to implement:
 
-- get map to display lat and long values from db
+- convert addresses to lat/long
 - write regex file: Password strength checker, lat/long
 - extract getUser method into util
 - Forgot password function
